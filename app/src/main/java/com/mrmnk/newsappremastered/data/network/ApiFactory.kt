@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiFactory {
 
     private const val BASE_URL =
-        "https://saurav.tech/NewsAPI/top-headlines/category/science/in.json"
+        "https://saurav.tech/NewsAPI/top-headlines/category/science/"
 
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
