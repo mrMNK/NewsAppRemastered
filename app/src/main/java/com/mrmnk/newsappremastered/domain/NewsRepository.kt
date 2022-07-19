@@ -8,5 +8,5 @@ interface NewsRepository {
 
     fun getNewsInfo(title: String): LiveData<List<NewsInfo>>
 
-    fun loadData()
+    suspend fun loadData()
 }

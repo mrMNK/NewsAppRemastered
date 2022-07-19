@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "full_news_list")
-data class NewsAppDbModel(
+data class NewsInfoDbModel(
     @PrimaryKey
     val title: String,
     val description: String,

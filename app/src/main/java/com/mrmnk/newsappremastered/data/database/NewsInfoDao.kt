@@ -7,13 +7,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface NewsAppDao {
+interface NewsInfoDao {
     @Query("SELECT * FROM full_news_list ORDER BY publishedAt DESC")
-    fun getNewsList(): LiveData<List<NewsAppDbModel>>
+    fun getNewsList(): LiveData<List<NewsInfoDbModel>>
 
     @Query("SELECT * FROM full_news_list WHERE title == :title LIMIT 1")
-    fun getNewsInfo(title: String): LiveData<NewsAppDbModel>
+    fun getNewsInfo(title: String): LiveData<NewsInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNewsList(newsList: List<NewsAppDbModel>)
+    suspend fun insertNewsList(newsList: List<NewsInfoDbModel>)
 }

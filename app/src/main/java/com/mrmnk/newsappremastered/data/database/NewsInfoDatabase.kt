@@ -5,20 +5,20 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [NewsAppDbModel::class], version = 1, exportSchema = false)
-abstract class NewsAppDatabase : RoomDatabase() {
+@Database(entities = [NewsInfoDbModel::class], version = 1, exportSchema = false)
+abstract class NewsInfoDatabase : RoomDatabase() {
     companion object {
-        private var db: NewsAppDatabase? = null
+        private var db: NewsInfoDatabase? = null
         private const val DB_NAME = "main.db"
         private val LOCK = Any()
 
-        fun getInstance(context: Context): NewsAppDatabase {
+        fun getInstance(context: Context): NewsInfoDatabase {
             synchronized(LOCK) {
                 db?.let { return it }
-                val instance: NewsAppDatabase =
+                val instance: NewsInfoDatabase =
                     Room.databaseBuilder(
                         context,
-                        NewsAppDatabase::class.java,
+                        NewsInfoDatabase::class.java,
                         DB_NAME
                     )
                         .fallbackToDestructiveMigration()
@@ -29,5 +29,5 @@ abstract class NewsAppDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun newsAppDao(): NewsAppDao
+    abstract fun newsAppDao(): NewsInfoDao
 }
