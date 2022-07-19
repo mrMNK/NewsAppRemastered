@@ -4,7 +4,7 @@ interface NewsRepository {
 
     fun getNewsList(): List<NewsInfo>
 
-    fun getNewsInfo(title: String): List<NewsInfo>
+    fun getNewsInfo(title: String): NewsInfo
 
     suspend fun loadData()
 }
