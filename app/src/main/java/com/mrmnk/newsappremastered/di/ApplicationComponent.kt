@@ -1,6 +1,7 @@
 package com.mrmnk.newsappremastered.di
 
 import android.app.Application
+import com.mrmnk.newsappremastered.presentation.NewsActivity
 import com.mrmnk.newsappremastered.presentation.NewsApp
 import com.mrmnk.newsappremastered.presentation.SplashActivity
 import dagger.BindsInstance
@@ -18,6 +19,8 @@ interface ApplicationComponent {
     fun inject(application: NewsApp)
 
     fun inject(activity: SplashActivity)
+
+    fun inject(activity: NewsActivity)
 
     @Component.Factory
     interface Factory {
