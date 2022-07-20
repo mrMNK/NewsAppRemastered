@@ -1,10 +1,12 @@
 package com.mrmnk.newsappremastered.domain
 
+import androidx.lifecycle.LiveData
+
 interface NewsRepository {
 
-    fun getNewsList(): List<NewsInfo>
+    fun getNewsList(): LiveData<List<NewsInfo>>
 
-    fun getNewsInfo(title: String): NewsInfo
+    fun getNewsInfo(title: String): LiveData<NewsInfo>
 
     suspend fun loadData()
 }

@@ -1,5 +1,7 @@
 package com.mrmnk.newsappremastered.data.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.mrmnk.newsappremastered.data.database.NewsInfoDao
 import com.mrmnk.newsappremastered.data.mapper.NewsMapper
 import com.mrmnk.newsappremastered.data.network.ApiService
@@ -13,12 +15,16 @@ class NewsRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : NewsRepository {
 
-    override fun getNewsList(): List<NewsInfo> {
-        return mapper.mapListDbModelToListOfNewsInfo(newsInfoDao.getNewsList())
+    override fun getNewsList(): LiveData<List<NewsInfo>> {
+        return Transformations.map(newsInfoDao.getNewsList()) {
+            mapper.mapListDbModelToListOfNewsInfo(it)
+        }
     }
 
-    override fun getNewsInfo(title: String): NewsInfo {
-        return mapper.mapDbModelToEntity(newsInfoDao.getNewsInfo(title))
+    override fun getNewsInfo(title: String): LiveData<NewsInfo> {
+        return Transformations.map(newsInfoDao.getNewsInfo(title)) {
+            mapper.mapDbModelToEntity(it)
+        }
     }
 
     override suspend fun loadData() {
