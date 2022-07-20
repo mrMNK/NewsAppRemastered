@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-class SplashActivity: AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -21,5 +21,10 @@ class SplashActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory)[NewsViewModel::class.java]
         viewModel.load()
+        viewModel.newsList.observe(this) {
+            if (it.isNotEmpty()) {
+                TODO()
+            }
+        }
     }
 }
