@@ -5,7 +5,7 @@ import com.mrmnk.newsappremastered.di.DaggerApplicationComponent
 
 class NewsApp : Application() {
 
-    private val component by lazy {
+    val component by lazy {
         DaggerApplicationComponent.factory().create(this)
     }
 

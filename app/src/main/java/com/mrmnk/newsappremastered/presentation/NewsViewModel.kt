@@ -18,7 +18,7 @@ class NewsViewModel @Inject constructor(
 
     fun getNewsInfo(title: String) = getNewsInfoUseCase(title)
 
-    fun loadData() {
+    fun load() {
         viewModelScope.launch {
             loadDataUseCase()
         }
