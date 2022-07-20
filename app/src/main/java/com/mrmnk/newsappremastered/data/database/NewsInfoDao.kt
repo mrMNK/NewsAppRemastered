@@ -16,4 +16,7 @@ interface NewsInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNewsList(newsList: List<NewsInfoDbModel>)
+
+    @Query("DELETE FROM full_news_list")
+    suspend fun clearTable()
 }

@@ -28,6 +28,7 @@ class NewsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun loadData() {
+        newsInfoDao.clearTable()
         try {
             val newsListDto = mapper.mapListDtoToListOfNewsDbModel(apiService.getNewsList())
             newsInfoDao.insertNewsList(newsListDto)
