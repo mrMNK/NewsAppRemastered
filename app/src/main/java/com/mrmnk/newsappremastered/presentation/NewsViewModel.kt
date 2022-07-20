@@ -23,8 +23,4 @@ class NewsViewModel @Inject constructor(
             loadDataUseCase()
         }
     }
-
-    init {
-        loadData()
-    }
 }
