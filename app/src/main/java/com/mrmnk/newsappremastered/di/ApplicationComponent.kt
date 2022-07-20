@@ -1,16 +1,23 @@
 package com.mrmnk.newsappremastered.di
 
 import android.app.Application
+import com.mrmnk.newsappremastered.presentation.NewsApp
+import com.mrmnk.newsappremastered.presentation.SplashActivity
 import dagger.BindsInstance
 import dagger.Component
 
 @ApplicationScope
 @Component(
     modules = [
-        DataModule::class
+        DataModule::class,
+        ViewModelModule::class
     ]
 )
 interface ApplicationComponent {
+
+    fun inject(application: NewsApp)
+
+    fun inject(activity: SplashActivity)
 
     @Component.Factory
     interface Factory {
