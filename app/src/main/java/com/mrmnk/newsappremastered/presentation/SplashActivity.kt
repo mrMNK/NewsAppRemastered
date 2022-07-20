@@ -1,5 +1,6 @@
 package com.mrmnk.newsappremastered.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +24,13 @@ class SplashActivity : AppCompatActivity() {
         viewModel.load()
         viewModel.newsList.observe(this) {
             if (it.isNotEmpty()) {
-                TODO()
+                launchNewsActivity()
             }
         }
+    }
+
+    private fun launchNewsActivity() {
+        val intent = Intent(this, NewsActivity::class.java)
+        startActivity(intent)
     }
 }
