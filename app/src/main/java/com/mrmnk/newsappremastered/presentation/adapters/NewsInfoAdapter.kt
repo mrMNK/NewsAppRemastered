@@ -3,10 +3,13 @@ package com.mrmnk.newsappremastered.presentation.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
+import com.mrmnk.newsappremastered.R
 import com.mrmnk.newsappremastered.databinding.ItemNewsInfoBinding
 import com.mrmnk.newsappremastered.domain.NewsInfo
 import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 class NewsInfoAdapter(
     private val context: Context
@@ -30,7 +33,7 @@ class NewsInfoAdapter(
                 cardTitleTextView.text = title
                 cardDescriptionTextView.text = description
                 cardPublishedAt.text = publishedAt
-                Picasso.get().load(urlToImage).into(cardImageView)
+                loadImage(urlToImage, cardImageView)
                 root.setOnClickListener {
                     onNewsClickListener?.onNewsClick(this)
                 }
@@ -38,8 +41,15 @@ class NewsInfoAdapter(
         }
     }
 
+    private fun loadImage(url: String, imageView: ImageView) {
+        try {
+            Picasso.get().load(url).into(imageView)
+        } catch (e: Exception) {
+            Picasso.get().load(R.mipmap.ic_launcher).into(imageView)
+        }
+    }
+
     interface OnNewsClickListener {
         fun onNewsClick(newsInfo: NewsInfo)
     }
-
 }
