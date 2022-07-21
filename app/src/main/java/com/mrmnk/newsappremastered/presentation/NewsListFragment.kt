@@ -55,8 +55,20 @@ class NewsListFragment : Fragment() {
         }
         binding.newsRecyclerView.adapter = adapter
         viewModel = ViewModelProvider(this, viewModelFactory)[NewsViewModel::class.java]
-        viewModel.newsList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+        if (savedInstanceState != null) {
+            try {
+                viewModel.sortedList.observe(viewLifecycleOwner) {
+                    adapter.submitList(it)
+                }
+            } catch (e: Exception) {
+                viewModel.newsList.observe(viewLifecycleOwner) {
+                    adapter.submitList(it)
+                }
+            }
+        } else {
+            viewModel.newsList.observe(viewLifecycleOwner) {
+                adapter.submitList(it)
+            }
         }
         setOnEnterKeyListener()
     }
