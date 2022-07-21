@@ -104,7 +104,7 @@ class NewsListFragment : Fragment() {
         requireActivity().supportFragmentManager.popBackStack()
         requireActivity().supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, NewsDetailFragment.newInstance(title))
+            .add(R.id.fragment_container, NewsDetailFragment.newInstance(title))
             .addToBackStack(null)
             .commit()
     }
