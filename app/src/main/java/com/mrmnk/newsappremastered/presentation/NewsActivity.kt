@@ -19,7 +19,18 @@ class NewsActivity : AppCompatActivity() {
         component.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        launchNewsListFragment()
+        if (savedInstanceState == null) {
+            launchNewsListFragment()
+        }
+    }
+
+    override fun onBackPressed() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if (fragment is NewsListFragment) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private fun launchNewsListFragment() {
@@ -27,7 +38,6 @@ class NewsActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, NewsListFragment())
-            .addToBackStack(null)
             .commit()
     }
 }

@@ -29,6 +29,11 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        finish()
+    }
+
     private fun launchNewsActivity() {
         val intent = Intent(this, NewsActivity::class.java)
         startActivity(intent)
