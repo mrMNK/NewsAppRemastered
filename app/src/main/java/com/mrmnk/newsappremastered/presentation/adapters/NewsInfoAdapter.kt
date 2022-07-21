@@ -13,7 +13,7 @@ import java.lang.Exception
 
 class NewsInfoAdapter(
     private val context: Context
-) : ListAdapter<NewsInfo, NewsInfoViewHolder>(NewsInfoDiffCallback){
+) : ListAdapter<NewsInfo, NewsInfoViewHolder>(NewsInfoDiffCallback) {
 
     var onNewsClickListener: OnNewsClickListener? = null
 
@@ -41,6 +41,9 @@ class NewsInfoAdapter(
         }
     }
 
+    /**
+     * Loads image from URL, if URL == null sets image from R.mipmap
+     */
     private fun loadImage(url: String, imageView: ImageView) {
         try {
             Picasso.get().load(url).into(imageView)

@@ -27,9 +27,9 @@ class NewsRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getSortedNewsList(key: String): LiveData<List<NewsInfo>> {
-        if (key == "") {
-            getNewsList()
+    override fun getSortedNewsList(key: String?): LiveData<List<NewsInfo>> {
+        if (key.isNullOrBlank()) {
+            return getNewsList()
         }
         return Transformations.map(newsInfoDao.getSortedNewsList(key)) {
             mapper.mapListDbModelToListOfNewsInfo(it)

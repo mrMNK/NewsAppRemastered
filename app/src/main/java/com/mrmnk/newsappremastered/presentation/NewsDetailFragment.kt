@@ -56,10 +56,16 @@ class NewsDetailFragment : Fragment() {
         }
     }
 
+    /**
+     *Gets the news title from the Bundle object
+     */
     private fun getTitle(): String {
         return requireArguments().getString(EXTRA_TITLE, EMPTY_STRING)
     }
 
+    /**
+     * Loads image from URL, if URL == null sets image from R.mipmap
+     */
     private fun loadImage(url: String, imageView: ImageView) {
         try {
             Picasso.get().load(url).into(imageView)

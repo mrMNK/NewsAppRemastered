@@ -18,9 +18,7 @@ class NewsViewModel @Inject constructor(
 
     val newsList = getNewsListUseCase()
 
-    fun getSortedList(key: String) {
-        getSortedNewsListUseCase(key)
-    }
+    fun getSortedList(key: String) = getSortedNewsListUseCase(key)
 
     fun getNewsInfo(title: String) = getNewsInfoUseCase(title)
 

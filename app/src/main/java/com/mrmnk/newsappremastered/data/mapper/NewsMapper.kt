@@ -8,12 +8,12 @@ import javax.inject.Inject
 
 class NewsMapper @Inject constructor() {
 
-    fun mapDtoToDbModel(dto: NewsInfoDto) = NewsInfoDbModel(
+    private fun mapDtoToDbModel(dto: NewsInfoDto) = NewsInfoDbModel(
         title = dto.title ?: "",
         description = dto.description ?: "",
         content = dto.content ?: "",
         urlToImage = dto.urlToImage ?: "",
-        publishedAt = dto.publishedAt ?: ""
+        publishedAt = parseDateString(dto.publishedAt)
     )
 
     fun mapListDtoToListOfNewsDbModel(listDto: ListOfNewsInfoDto): List<NewsInfoDbModel> {
@@ -28,7 +28,7 @@ class NewsMapper @Inject constructor() {
         return result
     }
 
-    fun mapDbModelToEntity(dbModel: NewsInfoDbModel) = NewsInfo (
+    fun mapDbModelToEntity(dbModel: NewsInfoDbModel) = NewsInfo(
         title = dbModel.title,
         description = dbModel.description,
         content = dbModel.content,
@@ -38,10 +38,17 @@ class NewsMapper @Inject constructor() {
 
     fun mapListDbModelToListOfNewsInfo(listDbModel: List<NewsInfoDbModel>): List<NewsInfo> {
         val result = mutableListOf<NewsInfo>()
-        for(item in listDbModel) {
+        for (item in listDbModel) {
             val newsInfo = mapDbModelToEntity(item)
             result.add(newsInfo)
         }
         return result
+    }
+
+    private fun parseDateString(date: String?): String {
+        date?.let {
+            return it.replace("T", " ").replace("Z", "")
+        }
+        return ""
     }
 }
