@@ -14,6 +14,10 @@ interface NewsInfoDao {
     @Query("SELECT * FROM full_news_list WHERE title == :title LIMIT 1")
     fun getNewsInfo(title: String): LiveData<NewsInfoDbModel>
 
+    @Query("SELECT * FROM full_news_list WHERE " +
+            "title == :key or description == :key or content == :key")
+    fun getSortedNewsList(key: String): LiveData<List<NewsInfoDbModel>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNewsList(newsList: List<NewsInfoDbModel>)
 

@@ -54,6 +54,15 @@ class NewsListFragment : Fragment() {
         viewModel.newsList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+        setOnEnterKeyListener()
+    }
+
+    private fun setOnEnterKeyListener() {
+//        binding.searchEditTV.addTextChangedListener {
+//            viewModel.newsList.observe(viewLifecycleOwner) {
+//                adapter.submitList(it)
+//            }
+//        }
     }
 
     private fun launchNewsDetailFragment(title: String) {

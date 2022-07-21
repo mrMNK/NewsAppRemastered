@@ -8,5 +8,7 @@ interface NewsRepository {
 
     fun getNewsInfo(title: String): LiveData<NewsInfo>
 
+    fun getSortedNewsList(key: String): LiveData<List<NewsInfo>>
+
     suspend fun loadData()
 }
