@@ -31,7 +31,7 @@ class NewsRepositoryImpl @Inject constructor(
         if (key.isNullOrBlank()) {
             return getNewsList()
         }
-        return Transformations.map(newsInfoDao.getSortedNewsList(key)) {
+        return Transformations.map(newsInfoDao.getSortedNewsList("%$key%")) {
             mapper.mapListDbModelToListOfNewsInfo(it)
         }
     }

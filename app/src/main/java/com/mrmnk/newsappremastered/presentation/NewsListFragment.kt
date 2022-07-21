@@ -79,7 +79,7 @@ class NewsListFragment : Fragment() {
      * Filters news by occurrence (case of letters of the searched phrase is ignored)
      */
     private fun getSortedNews() {
-        val key = binding.searchEditTV.text.toString().lowercase()
+        val key = binding.searchEditTV.text.toString()
         viewModel.getSortedList(key)
             .observe(viewLifecycleOwner) {
                 adapter.submitList(it)
