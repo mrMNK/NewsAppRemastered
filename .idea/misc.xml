@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidUdemy/NewsAppRemastered/app/src/main/res/drawable/splash.xml" value="0.143" />
+        <entry key="..\:/AndroidUdemy/NewsAppRemastered/app/src/main/res/layout/fragment_news_detail.xml" value="0.36231884057971014" />
+        <entry key="..\:/AndroidUdemy/NewsAppRemastered/app/src/main/res/layout/item_news_info.xml" value="0.36231884057971014" />
         <entry key="..\:/AndroidUdemy/NewsAppRemastered/app/src/main/res/layout/news_activity.xml" value="0.3605072463768116" />
+        <entry key="..\:/AndroidUdemy/NewsAppRemastered/app/src/main/res/layout/news_list_fragment.xml" value="0.36231884057971014" />
       </map>
     </option>
   </component>
