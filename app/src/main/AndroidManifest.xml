@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".presentation.NewsActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden">
         </activity>
     </application>
 

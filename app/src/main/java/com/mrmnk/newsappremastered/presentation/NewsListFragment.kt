@@ -47,13 +47,12 @@ class NewsListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = NewsInfoAdapter(requireContext())
-        adapter.onNewsClickListener = object : NewsInfoAdapter.OnNewsClickListener {
-            override fun onNewsClick(newsInfo: NewsInfo) {
-                launchNewsDetailFragment(newsInfo.title)
-            }
-        }
-        binding.newsRecyclerView.adapter = adapter
+        setAdapter()
+        getNewsList(savedInstanceState)
+        setOnEnterKeyListener()
+    }
+
+    private fun getNewsList(savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this, viewModelFactory)[NewsViewModel::class.java]
         if (savedInstanceState != null) {
             try {
@@ -70,7 +69,16 @@ class NewsListFragment : Fragment() {
                 adapter.submitList(it)
             }
         }
-        setOnEnterKeyListener()
+    }
+
+    private fun setAdapter() {
+        adapter = NewsInfoAdapter(requireContext())
+        adapter.onNewsClickListener = object : NewsInfoAdapter.OnNewsClickListener {
+            override fun onNewsClick(newsInfo: NewsInfo) {
+                launchNewsDetailFragment(newsInfo.title)
+            }
+        }
+        binding.newsRecyclerView.adapter = adapter
     }
 
     /**
@@ -97,7 +105,6 @@ class NewsListFragment : Fragment() {
                 adapter.submitList(it)
             }
     }
-
 
     /**
      *Hide keyboard
